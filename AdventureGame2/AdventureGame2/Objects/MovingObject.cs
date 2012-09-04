@@ -33,7 +33,7 @@ namespace AdventureGameNamespace
             List<GameObject> solids = ObjectHolder.Objects.Where(obj => obj is SolidObject).ToList();
             foreach (var solid in solids)
             {
-                if (this.IsColliding(solid))
+                if (this.IsRectangleColliding(solid))
                 {
                     ranIntoWall = true;
                     break;

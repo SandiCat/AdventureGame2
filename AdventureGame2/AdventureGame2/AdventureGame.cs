@@ -68,7 +68,11 @@ namespace AdventureGameNamespace
             TextureHolder.DefaultTextures[typeof(DungeonWall)] = TextureHolder.AddTexture("DungeonWall");
             TextureHolder.DefaultTextures[typeof(DungeonFloor)] = TextureHolder.AddTexture("DungeonFloor");
             TextureHolder.DefaultTextures[typeof(DungeonFloor2)] = TextureHolder.AddTexture("DungeonFloor2");
-            TextureHolder.DefaultTextures[typeof(Player)] = TextureHolder.ColoredRectangle(Color.Yellow, Grid.SquareSide, Grid.SquareSide);
+            Player.TextureUp = TextureHolder.AddTexture("Player/PlayerUp");
+            Player.TextureDown = TextureHolder.AddTexture("Player/PlayerDown");
+            Player.TextureLeft = TextureHolder.AddTexture("Player/PlayerLeft");
+            Player.TextureRight = TextureHolder.AddTexture("Player/PlayerRight");
+            TextureHolder.DefaultTextures[typeof(Player)] = TextureHolder.Textures["Player/PlayerRight"];
 
             //Load sounds:
 
@@ -133,7 +137,7 @@ namespace AdventureGameNamespace
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Green);
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
             Events.RiseDraw();

@@ -11,11 +11,22 @@ using Microsoft.Xna.Framework.Media;
 
 using Wormhole;
 
-
 namespace AdventureGameNamespace
 {
     public class Player : MovingObject
     {
+        private enum PlayerDirection
+        {
+            Up, Down, Left, Right
+        }
+
+        PlayerDirection Direction = PlayerDirection.Right;
+
+        static public Texture2D TextureUp;
+        static public Texture2D TextureDown;
+        static public Texture2D TextureLeft;
+        static public Texture2D TextureRight;
+
         public Player()
             : base()
         {
@@ -29,13 +40,51 @@ namespace AdventureGameNamespace
         {
             //Move:
             if (KeyboardManager.KeysDown.Contains(Keys.A))
+            {
                 TryStep(Directions.Left, 4);
+                Direction = PlayerDirection.Left;
+                Sprite.Image = TextureLeft;
+            }
             else if (KeyboardManager.KeysDown.Contains(Keys.D))
+            {
                 TryStep(Directions.Right, 4);
+                Direction = PlayerDirection.Right;
+                Sprite.Image = TextureRight;
+            }
             else if (KeyboardManager.KeysDown.Contains(Keys.W))
+            {
                 TryStep(Directions.Up, 4);
+                Direction = PlayerDirection.Up;
+                Sprite.Image = TextureUp;
+            }
             else if (KeyboardManager.KeysDown.Contains(Keys.S))
+            {
                 TryStep(Directions.Down, 4);
+                Direction = PlayerDirection.Down;
+                Sprite.Image = TextureDown;
+            }
+
+            //Change direction and image:
+            if (KeyboardManager.PressedKeys.Contains(Keys.A))
+            {
+                Direction = PlayerDirection.Left;
+                Sprite.Image = TextureLeft;
+            }
+            else if (KeyboardManager.PressedKeys.Contains(Keys.D))
+            {
+                Direction = PlayerDirection.Right;
+                Sprite.Image = TextureRight;
+            }
+            else if (KeyboardManager.PressedKeys.Contains(Keys.W))
+            {
+                Direction = PlayerDirection.Up;
+                Sprite.Image = TextureUp;
+            }
+            else if (KeyboardManager.PressedKeys.Contains(Keys.S))
+            {
+                Direction = PlayerDirection.Down;
+                Sprite.Image = TextureDown;
+            }
 
             //Update camera:
             Camera.Position = Sprite.Position - new Vector2(WindowChecks.Width() / 2, WindowChecks.Height() / 2);
