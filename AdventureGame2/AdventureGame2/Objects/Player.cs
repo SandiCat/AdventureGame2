@@ -27,7 +27,7 @@ namespace AdventureGameNamespace
 
         protected override void Update()
         {
-            //StepingAngle:
+            //Move:
             if (KeyboardManager.KeysDown.Contains(Keys.A))
                 TryStep(Directions.Left, 4);
             else if (KeyboardManager.KeysDown.Contains(Keys.D))
@@ -36,6 +36,9 @@ namespace AdventureGameNamespace
                 TryStep(Directions.Up, 4);
             else if (KeyboardManager.KeysDown.Contains(Keys.S))
                 TryStep(Directions.Down, 4);
+
+            //Update camera:
+            Camera.Position = Sprite.Position - new Vector2(WindowChecks.Width() / 2, WindowChecks.Height() / 2);
         }
     }
 }

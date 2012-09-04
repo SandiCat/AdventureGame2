@@ -61,6 +61,9 @@ namespace AdventureGameNamespace
             //Initalize the grid:
             Grid.Initialize(40);
 
+            //Initialize the camera:
+            Camera.Initialize(new Vector2(0,0));
+
             //Initialize default sprites:
             TextureHolder.DefaultTextures[typeof(DungeonWall)] = TextureHolder.ColoredRectangle(Color.Black, Grid.SquareSide, Grid.SquareSide);
             TextureHolder.DefaultTextures[typeof(Player)] = TextureHolder.ColoredRectangle(Color.Yellow, Grid.SquareSide, Grid.SquareSide);
@@ -79,12 +82,12 @@ namespace AdventureGameNamespace
                     "wwwwwwwwwwwwww",
                     "w............w",
                     "w............w",
-                    "w............w",
-                    "w............w",
-                    "w.....p......w",
-                    "w............w",
-                    "w............w",
-                    "w............w",
+                    "w............wwwwwwwwww",
+                    "w.....................w",
+                    "w.....p...............w",
+                    "w.....................w",
+                    "w.....................w",
+                    "w............wwwwwwwwww",
                     "w............w",
                     "w............w",
                     "wwwwwwwwwwwwww"
