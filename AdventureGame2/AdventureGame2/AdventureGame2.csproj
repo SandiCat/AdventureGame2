@@ -111,7 +111,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\DungeonWall.cs" />
+    <Compile Include="Objects\Dungeon\DungeonFloor2.cs" />
+    <Compile Include="Objects\Dungeon\DungeonFloor.cs" />
+    <Compile Include="Objects\Dungeon\DungeonWall.cs" />
+    <Compile Include="Objects\Floor.cs" />
     <Compile Include="Objects\MovingObject.cs" />
     <Compile Include="Objects\Player.cs" />
     <Compile Include="Objects\SolidObject.cs" />

@@ -32,8 +32,8 @@ namespace AdventureGameNamespace
             Device = graphics.GraphicsDevice;
 
             //Initialize game info:
-            graphics.PreferredBackBufferWidth = 620;
-            graphics.PreferredBackBufferHeight = 500;
+            graphics.PreferredBackBufferWidth = 1000;
+            graphics.PreferredBackBufferHeight = 650;
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Window.Title = "Adventure Game 2.0";
@@ -65,13 +65,37 @@ namespace AdventureGameNamespace
             Camera.Initialize(new Vector2(0,0));
 
             //Initialize default sprites:
-            TextureHolder.DefaultTextures[typeof(DungeonWall)] = TextureHolder.ColoredRectangle(Color.Black, Grid.SquareSide, Grid.SquareSide);
+            TextureHolder.DefaultTextures[typeof(DungeonWall)] = TextureHolder.AddTexture("DungeonWall");
+            TextureHolder.DefaultTextures[typeof(DungeonFloor)] = TextureHolder.AddTexture("DungeonFloor");
+            TextureHolder.DefaultTextures[typeof(DungeonFloor2)] = TextureHolder.AddTexture("DungeonFloor2");
             TextureHolder.DefaultTextures[typeof(Player)] = TextureHolder.ColoredRectangle(Color.Yellow, Grid.SquareSide, Grid.SquareSide);
 
             //Load sounds:
 
             //Create game objects:
-            TileObjectCreator.CreateWithinGrid(
+            TileObjectCreator.CreateWithinGrid( //Make the floor
+                new Dictionary<char, Type>()
+                {
+                    {'f', typeof(DungeonFloor)},
+                    {'s', typeof(DungeonFloor2)},
+                    {'.', null}
+                },
+                new string[]{
+                    "..............",
+                    ".sfffffffffff.",
+                    ".ffffffffffff.",
+                    ".ffffffffffff..........",
+                    ".fffffffffffffffsfffff.",
+                    ".fffffffsfffffffffffff.",
+                    ".fffffffffffffffffffff.",
+                    ".fffffffffffffffffffff.",
+                    ".ffffffffffff..........",
+                    ".fffsffffffff.",
+                    ".ffffffffffff.",
+                    ".............."
+                });
+
+            TileObjectCreator.CreateWithinGrid( 
                 new Dictionary<char, Type>()
                 {
                     {'w', typeof(DungeonWall)},
