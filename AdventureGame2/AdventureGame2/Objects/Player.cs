@@ -88,6 +88,31 @@ namespace AdventureGameNamespace
 
             //Update camera:
             Camera.Position = Sprite.Position - new Vector2(WindowChecks.Width() / 2, WindowChecks.Height() / 2);
+
+            if (KeyboardManager.PressedKeys.Contains(Keys.Space))
+            {
+                //Delete any existing accesories:
+                List<GameObject> ToDelete = new List<GameObject>();
+                foreach (var obj in ObjectHolder.Objects.Where((obj) => obj is Accesory)) { ToDelete.Add(obj); }
+                foreach (var obj in ToDelete) { ObjectHolder.Delete(obj);  }
+
+                if (Direction == PlayerDirection.Up)
+                {
+                    ObjectHolder.Create(new PlayerSword(this, Side.Up));
+                }
+                else if (Direction == PlayerDirection.Down)
+                {
+                    ObjectHolder.Create(new PlayerSword(this, Side.Down));
+                }
+                else if (Direction == PlayerDirection.Left)
+                {
+                    ObjectHolder.Create(new PlayerSword(this, Side.Left));
+                }
+                else if (Direction == PlayerDirection.Right)
+                {
+                    ObjectHolder.Create(new PlayerSword(this, Side.Right));
+                }
+            }
         }
     }
 }
