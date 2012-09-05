@@ -14,12 +14,6 @@ using Wormhole;
 
 namespace AdventureGameNamespace
 {
-    
-    public enum Side
-    {
-        Up, Down, Left, Right
-    }
-
     public abstract class Accesory : GameObject
     {
         public Accesory()
@@ -30,60 +24,41 @@ namespace AdventureGameNamespace
             : base(position)
         {
         }
-        public Accesory(MovingObject movable, Side side)
+        public Accesory(MovingObject movable, float rotation)
             : base()
         {
-            side = _side;
-            
-            if (side == Side.Down)
-            {
-                Sprite.Rotation = Directions.Down;
-            }
-            else if (side == Side.Right)
-            {
-                Sprite.Rotation = Directions.Right;
-            }
-            else if (side == Side.Left)
-            {
-                Sprite.Rotation = Directions.Left;
-            }
-
-            _movable = movable;
+            Sprite.Rotation = rotation;
+            Movable = movable;
+            MoveToMovable();
         }
 
-        private MovingObject _movable;
-
-        private readonly Side _side;
+        public MovingObject Movable { get; private set; }
+        private Vector2 _movableCentar
+        {
+            get
+            {
+                float x = Movable.Sprite.GetTopLeftCorner().X + Movable.Sprite.Image.Width / 2;
+                float y = Movable.Sprite.GetTopLeftCorner().Y + Movable.Sprite.Image.Height / 2;
+                return new Vector2(x, y);
+            }
+            set
+            {
+                _movableCentar = value;
+            }
+        }
 
         protected override void Update()
         {
-            Rectangle _rectangleMov = _movable.Sprite.GetRectangle();
-            Rectangle _rectangleThis = Sprite.GetRectangle();
+            MoveToMovable();
+        }
 
-            if (_side == Side.Up)
-            {
-                int x = _rectangleMov.Right - _rectangleThis.Width;
-                int y = _rectangleMov.Top - _rectangleThis.Height;
-                Sprite.Position = new Vector2(x, y);
-            }
-            else if (_side == Side.Down)
-            {
-                int x = _rectangleMov.Left;
-                int y = _rectangleMov.Bottom;
-                Sprite.Position = new Vector2(x, y);
-            }
-            else if (_side == Side.Right)
-            {
-                int x = _rectangleMov.Right;
-                int y = _rectangleMov.Bottom - _rectangleThis.Height;
-                Sprite.Position = new Vector2(x, y);
-            }
-            else if (_side == Side.Left)
-            {
-                int x = _rectangleMov.Left - _rectangleThis.Width;
-                int y = _rectangleMov.Top;
-                Sprite.Position = new Vector2(x, y);
-            }
+        private void MoveToMovable()
+        {
+            Vector2 up = new Vector2(0, -1);
+            Matrix rotationMat = Matrix.CreateRotationZ(Sprite.Rotation);
+            Vector2 direction = Vector2.Transform(up, rotationMat);
+
+            Sprite.Position = _movableCentar + direction * 50;
         }
     }
 }

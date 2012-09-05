@@ -24,8 +24,8 @@ namespace AdventureGameNamespace
             : base(position)
         {
         }
-        public PlayerSword(MovingObject movable, Side side)
-            : base(movable, side)
+        public PlayerSword(MovingObject movable, float rotation)
+            : base(movable, rotation)
         {
         }
 
