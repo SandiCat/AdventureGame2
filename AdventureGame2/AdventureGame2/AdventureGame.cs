@@ -73,7 +73,7 @@ namespace AdventureGameNamespace
             Player.TextureLeft = TextureHolder.AddTexture("Player/PlayerLeft");
             Player.TextureRight = TextureHolder.AddTexture("Player/PlayerRight");
             TextureHolder.DefaultTextures[typeof(Player)] = TextureHolder.Textures["Player/PlayerRight"];
-            TextureHolder.DefaultTextures[typeof(PlayerSword)] = TextureHolder.ColoredRectangle(Color.Blue, 5, 30);
+            TextureHolder.DefaultTextures[typeof(PlayerSword)] = TextureHolder.AddTexture("PlayerSword");
 
             //Load sounds:
 

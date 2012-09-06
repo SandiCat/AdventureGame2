@@ -116,8 +116,9 @@
     <Compile Include="Objects\DungeonAdventure\DungeonWall.cs" />
     <Compile Include="Objects\DungeonAdventure\PlayerSword.cs" />
     <Compile Include="Objects\Floor.cs" />
+    <Compile Include="Objects\Mob.cs" />
     <Compile Include="Objects\MovingObject.cs" />
-    <Compile Include="Objects\Player.cs" />
+    <Compile Include="Objects\DungeonAdventure\Player.cs" />
     <Compile Include="Objects\SolidObject.cs" />
     <Compile Include="Objects\Wall.cs" />
     <Compile Include="Objects\Accesory.cs" />

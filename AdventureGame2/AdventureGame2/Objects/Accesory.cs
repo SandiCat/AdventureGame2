@@ -58,7 +58,7 @@ namespace AdventureGameNamespace
             Matrix rotationMat = Matrix.CreateRotationZ(Sprite.Rotation);
             Vector2 direction = Vector2.Transform(up, rotationMat);
 
-            Sprite.Position = _movableCentar + direction * 50;
+            Sprite.Position = _movableCentar + direction * 80;
         }
     }
 }

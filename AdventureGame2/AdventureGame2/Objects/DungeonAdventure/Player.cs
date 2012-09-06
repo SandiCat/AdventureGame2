@@ -13,24 +13,8 @@ using Wormhole;
 
 namespace AdventureGameNamespace
 {
-    public class Player : MovingObject
+    public class Player : Mob
     {
-        private enum PlayerDirection
-        {
-            Up, Down, Left, Right
-        }
-
-        PlayerDirection Direction = PlayerDirection.Right;
-
-        Alarm _swordAlarm = new Alarm();
-        Alarm _reset_PullOutSword = new Alarm();
-        bool _canPullOutSword = true;
-
-        static public Texture2D TextureUp;
-        static public Texture2D TextureDown;
-        static public Texture2D TextureLeft;
-        static public Texture2D TextureRight;
-
         public Player()
             : base()
         {
@@ -40,53 +24,49 @@ namespace AdventureGameNamespace
         {
         }
 
+        Alarm _swordAlarm = new Alarm();
+        Alarm _reset_PullOutSword = new Alarm();
+        bool _canPullOutSword = true;
+
         protected override void Update()
         {
             //Move:
             if (KeyboardManager.KeysDown.Contains(Keys.A))
             {
                 TryStep(Directions.Left, 4);
-                Direction = PlayerDirection.Left;
-                Sprite.Image = TextureLeft;
             }
             else if (KeyboardManager.KeysDown.Contains(Keys.D))
             {
                 TryStep(Directions.Right, 4);
-                Direction = PlayerDirection.Right;
-                Sprite.Image = TextureRight;
             }
             else if (KeyboardManager.KeysDown.Contains(Keys.W))
             {
                 TryStep(Directions.Up, 4);
-                Direction = PlayerDirection.Up;
-                Sprite.Image = TextureUp;
             }
             else if (KeyboardManager.KeysDown.Contains(Keys.S))
             {
                 TryStep(Directions.Down, 4);
-                Direction = PlayerDirection.Down;
-                Sprite.Image = TextureDown;
             }
 
             //Change direction and image:
             if (KeyboardManager.PressedKeys.Contains(Keys.A))
             {
-                Direction = PlayerDirection.Left;
+                Direction = MobDirection.Left;
                 Sprite.Image = TextureLeft;
             }
             else if (KeyboardManager.PressedKeys.Contains(Keys.D))
             {
-                Direction = PlayerDirection.Right;
+                Direction = MobDirection.Right;
                 Sprite.Image = TextureRight;
             }
             else if (KeyboardManager.PressedKeys.Contains(Keys.W))
             {
-                Direction = PlayerDirection.Up;
+                Direction = MobDirection.Up;
                 Sprite.Image = TextureUp;
             }
             else if (KeyboardManager.PressedKeys.Contains(Keys.S))
             {
-                Direction = PlayerDirection.Down;
+                Direction = MobDirection.Down;
                 Sprite.Image = TextureDown;
             }
 
@@ -107,19 +87,19 @@ namespace AdventureGameNamespace
                 foreach (var obj in ObjectHolder.Objects.Where((obj) => obj.GetType() == typeof(PlayerSword))) { ToDelete.Add(obj); }
                 foreach (var obj in ToDelete) { ObjectHolder.Delete(obj); }
 
-                if (Direction == PlayerDirection.Up)
+                if (Direction == MobDirection.Up)
                 {
                     ObjectHolder.Create(new PlayerSword(this, Directions.Up));
                 }
-                else if (Direction == PlayerDirection.Down)
+                else if (Direction == MobDirection.Down)
                 {
                     ObjectHolder.Create(new PlayerSword(this, Directions.Down));
                 }
-                else if (Direction == PlayerDirection.Left)
+                else if (Direction == MobDirection.Left)
                 {
                     ObjectHolder.Create(new PlayerSword(this, Directions.Left));
                 }
-                else if (Direction == PlayerDirection.Right)
+                else if (Direction == MobDirection.Right)
                 {
                     ObjectHolder.Create(new PlayerSword(this, Directions.Right));
                 }
@@ -127,7 +107,7 @@ namespace AdventureGameNamespace
                 _swordAlarm.Restart(10);
 
                 _canPullOutSword = false;
-                _reset_PullOutSword.Restart(60);
+                _reset_PullOutSword.Restart(40);
             }
 
             //Delete the sword when alarm is over:
@@ -154,19 +134,19 @@ namespace AdventureGameNamespace
                 Accesory accesory = (Accesory)obj;
                 if (accesory.Movable == this)
                 {
-                    if (Direction == PlayerDirection.Up)
+                    if (Direction == MobDirection.Up)
                     {
                         accesory.Sprite.Rotation = Directions.Up;
                     }
-                    else if (Direction == PlayerDirection.Down)
+                    else if (Direction == MobDirection.Down)
                     {
                         accesory.Sprite.Rotation = Directions.Down;
                     }
-                    else if (Direction == PlayerDirection.Left)
+                    else if (Direction == MobDirection.Left)
                     {
                         accesory.Sprite.Rotation = Directions.Left;
                     }
-                    else if (Direction == PlayerDirection.Right)
+                    else if (Direction == MobDirection.Right)
                     {
                         accesory.Sprite.Rotation = Directions.Right;
                     }
