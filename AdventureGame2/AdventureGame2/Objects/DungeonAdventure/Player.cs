@@ -24,10 +24,6 @@ namespace AdventureGameNamespace
         {
         }
 
-        Alarm _swordAlarm = new Alarm();
-        Alarm _reset_PullOutSword = new Alarm();
-        bool _canPullOutSword = true;
-
         protected override void Update()
         {
             //Move:
@@ -69,57 +65,11 @@ namespace AdventureGameNamespace
             //Update camera:
             Camera.Position = Sprite.Position - new Vector2(WindowChecks.Width() / 2, WindowChecks.Height() / 2);
 
-            ManageAccesores();
-        }
-
-        private void ManageAccesores()
-        {
-            #region Sword
-            //Make the sword appear:
-            if (KeyboardManager.PressedKeys.Contains(Keys.Space) && _canPullOutSword)
+            //Pull out sword:
+            if (KeyboardManager.PressedKeys.Contains(Keys.Space))
             {
-                //Delete any existing Player Swords:
-                List<GameObject> ToDelete = new List<GameObject>();
-                foreach (var obj in ObjectHolder.Objects.Where((obj) => obj.GetType() == typeof(PlayerSword))) { ToDelete.Add(obj); }
-                foreach (var obj in ToDelete) { ObjectHolder.Delete(obj); }
-
-                if (Direction == MobDirection.Up)
-                {
-                    ObjectHolder.Create(new PlayerSword(this, Directions.Up));
-                }
-                else if (Direction == MobDirection.Down)
-                {
-                    ObjectHolder.Create(new PlayerSword(this, Directions.Down));
-                }
-                else if (Direction == MobDirection.Left)
-                {
-                    ObjectHolder.Create(new PlayerSword(this, Directions.Left));
-                }
-                else if (Direction == MobDirection.Right)
-                {
-                    ObjectHolder.Create(new PlayerSword(this, Directions.Right));
-                }
-
-                _swordAlarm.Restart(10);
-
-                _canPullOutSword = false;
-                _reset_PullOutSword.Restart(40);
+                ObjectHolder.Create(new PlayerSword(this));
             }
-
-            //Delete the sword when alarm is over:
-            if (_swordAlarm.IsDone())
-            {
-                PlayerSword sword = (PlayerSword)ObjectHolder.Objects.Where((obj) => obj.GetType() == typeof(PlayerSword)).ToList()[0];
-
-                ObjectHolder.Delete(sword);
-            }
-
-            //Restart reset _canPullOutSword:
-            if (_reset_PullOutSword.IsDone())
-            {
-                _canPullOutSword = true;
-            }
-            #endregion
         }
     }
 }

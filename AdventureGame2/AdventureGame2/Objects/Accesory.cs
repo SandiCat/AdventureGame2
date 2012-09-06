@@ -24,10 +24,9 @@ namespace AdventureGameNamespace
             : base(position)
         {
         }
-        public Accesory(Mob mob, float rotation)
+        public Accesory(Mob mob)
             : base()
         {
-            Sprite.Rotation = rotation;
             AssingedMob = mob;
             UpdateWithMovable();
         }
