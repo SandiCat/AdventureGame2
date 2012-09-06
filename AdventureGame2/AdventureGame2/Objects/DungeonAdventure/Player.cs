@@ -51,23 +51,19 @@ namespace AdventureGameNamespace
             //Change direction and image:
             if (KeyboardManager.PressedKeys.Contains(Keys.A))
             {
-                Direction = MobDirection.Left;
-                Sprite.Image = TextureLeft;
+                ChangeDirectionAndImage(MobDirection.Left);
             }
             else if (KeyboardManager.PressedKeys.Contains(Keys.D))
             {
-                Direction = MobDirection.Right;
-                Sprite.Image = TextureRight;
+                ChangeDirectionAndImage(MobDirection.Right);
             }
             else if (KeyboardManager.PressedKeys.Contains(Keys.W))
             {
-                Direction = MobDirection.Up;
-                Sprite.Image = TextureUp;
+                ChangeDirectionAndImage(MobDirection.Up);
             }
             else if (KeyboardManager.PressedKeys.Contains(Keys.S))
             {
-                Direction = MobDirection.Down;
-                Sprite.Image = TextureDown;
+                ChangeDirectionAndImage(MobDirection.Down);
             }
 
             //Update camera:
