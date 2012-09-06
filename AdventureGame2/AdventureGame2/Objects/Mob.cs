@@ -13,12 +13,13 @@ using Wormhole;
 
 namespace AdventureGameNamespace
 {
+    public enum MobDirection
+    {
+        Up, Down, Left, Right
+    }
+
     public abstract class Mob : MovingObject
     {
-        public enum MobDirection
-        {
-            Up, Down, Left, Right
-        }
 
         public Mob()
             : base()
@@ -36,7 +37,7 @@ namespace AdventureGameNamespace
         }
 
 
-        protected MobDirection Direction = MobDirection.Right;
+        public MobDirection Direction = MobDirection.Right;
 
         static public Texture2D TextureUp;
         static public Texture2D TextureDown;

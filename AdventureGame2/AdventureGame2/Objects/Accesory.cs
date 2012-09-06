@@ -24,41 +24,62 @@ namespace AdventureGameNamespace
             : base(position)
         {
         }
-        public Accesory(MovingObject movable, float rotation)
+        public Accesory(Mob mob, float rotation)
             : base()
         {
             Sprite.Rotation = rotation;
-            Movable = movable;
-            MoveToMovable();
+            AssingedMob = mob;
+            UpdateWithMovable();
         }
 
-        public MovingObject Movable { get; private set; }
-        private Vector2 _movableCentar
+        public Mob AssingedMob { get; private set; }
+        private Vector2 _mobCentar
         {
             get
             {
-                float x = Movable.Sprite.GetTopLeftCorner().X + Movable.Sprite.Image.Width / 2;
-                float y = Movable.Sprite.GetTopLeftCorner().Y + Movable.Sprite.Image.Height / 2;
+                float x = AssingedMob.Sprite.GetTopLeftCorner().X + AssingedMob.Sprite.Image.Width / 2;
+                float y = AssingedMob.Sprite.GetTopLeftCorner().Y + AssingedMob.Sprite.Image.Height / 2;
                 return new Vector2(x, y);
             }
             set
             {
-                _movableCentar = value;
+                _mobCentar = value;
             }
         }
 
         protected override void Update()
         {
-            MoveToMovable();
+            UpdateWithMovable();
         }
 
-        private void MoveToMovable()
+        private void UpdateWithMovable()
         {
+            //Calculate direction:
+
+            if (AssingedMob.Direction == MobDirection.Up)
+            {
+                Sprite.Rotation = Directions.Up;
+            }
+            else if (AssingedMob.Direction == MobDirection.Down)
+            {
+                Sprite.Rotation = Directions.Down;
+            }
+            else if (AssingedMob.Direction == MobDirection.Left)
+            {
+                Sprite.Rotation = Directions.Left;
+            }
+            else if (AssingedMob.Direction == MobDirection.Right)
+            {
+                Sprite.Rotation = Directions.Right;
+            }
+
+            //Transform rotation into direction:
             Vector2 up = new Vector2(0, -1);
             Matrix rotationMat = Matrix.CreateRotationZ(Sprite.Rotation);
             Vector2 direction = Vector2.Transform(up, rotationMat);
 
-            Sprite.Position = _movableCentar + direction * 80;
+            //Move to mob:
+            Sprite.Position = _mobCentar + direction * (Grid.SquareSide / 2 + Sprite.Image.Height);
         }
     }
 }

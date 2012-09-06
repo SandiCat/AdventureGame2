@@ -120,35 +120,6 @@ namespace AdventureGameNamespace
                 _canPullOutSword = true;
             }
             #endregion
-
-            #region Update
-            //Update all accesories attached to this:
-            List<GameObject> accesories = ObjectHolder.Objects.Where((obj) => obj is Accesory).ToList();
-
-            foreach (var obj in accesories)
-            {
-                Accesory accesory = (Accesory)obj;
-                if (accesory.Movable == this)
-                {
-                    if (Direction == MobDirection.Up)
-                    {
-                        accesory.Sprite.Rotation = Directions.Up;
-                    }
-                    else if (Direction == MobDirection.Down)
-                    {
-                        accesory.Sprite.Rotation = Directions.Down;
-                    }
-                    else if (Direction == MobDirection.Left)
-                    {
-                        accesory.Sprite.Rotation = Directions.Left;
-                    }
-                    else if (Direction == MobDirection.Right)
-                    {
-                        accesory.Sprite.Rotation = Directions.Right;
-                    }
-                }
-            }
-            #endregion
         }
     }
 }
