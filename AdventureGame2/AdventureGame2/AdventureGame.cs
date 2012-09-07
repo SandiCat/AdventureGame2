@@ -68,11 +68,7 @@ namespace AdventureGameNamespace
             TextureHolder.DefaultTextures[typeof(DungeonWall)] = TextureHolder.AddTexture("DungeonWall");
             TextureHolder.DefaultTextures[typeof(DungeonFloor)] = TextureHolder.AddTexture("DungeonFloor");
             TextureHolder.DefaultTextures[typeof(DungeonFloor2)] = TextureHolder.AddTexture("DungeonFloor2");
-            Player.TextureUp = TextureHolder.AddTexture("Player/PlayerUp");
-            Player.TextureDown = TextureHolder.AddTexture("Player/PlayerDown");
-            Player.TextureLeft = TextureHolder.AddTexture("Player/PlayerLeft");
-            Player.TextureRight = TextureHolder.AddTexture("Player/PlayerRight");
-            TextureHolder.DefaultTextures[typeof(Player)] = TextureHolder.Textures["Player/PlayerRight"];
+            TextureHolder.DefaultTextures[typeof(Player)] = TextureHolder.AddTexture("Player");
             TextureHolder.DefaultTextures[typeof(PlayerSword)] = TextureHolder.AddTexture("PlayerSword");
 
             //Load sounds:
