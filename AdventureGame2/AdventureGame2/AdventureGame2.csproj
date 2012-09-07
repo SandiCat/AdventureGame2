@@ -111,17 +111,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\DungeonAdventure\DungeonFloor2.cs" />
-    <Compile Include="Objects\DungeonAdventure\DungeonFloor.cs" />
-    <Compile Include="Objects\DungeonAdventure\DungeonWall.cs" />
-    <Compile Include="Objects\DungeonAdventure\PlayerSword.cs" />
-    <Compile Include="Objects\Floor.cs" />
-    <Compile Include="Objects\Mob.cs" />
-    <Compile Include="Objects\MovingObject.cs" />
-    <Compile Include="Objects\DungeonAdventure\Player.cs" />
-    <Compile Include="Objects\SolidObject.cs" />
-    <Compile Include="Objects\Wall.cs" />
-    <Compile Include="Objects\Accesory.cs" />
+    <Compile Include="Objects\DungeonFloor2.cs" />
+    <Compile Include="Objects\DungeonFloor.cs" />
+    <Compile Include="Objects\DungeonWall.cs" />
+    <Compile Include="Objects\PlayerSword.cs" />
+    <Compile Include="Objects\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="AdventureGame.cs" />
@@ -131,6 +125,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\MazeGameEngine\MazeGameEngine\MazeGameEngine.csproj">
+      <Project>{374B26A7-68DC-4091-ABD4-ACCF18E99D0B}</Project>
+      <Name>MazeGameEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AdventureGame2Content\AdventureGame2Content.contentproj">
       <Name>AdventureGame2Content</Name>
       <XnaReferenceType>Content</XnaReferenceType>
@@ -163,9 +161,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Objects\Weapons\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

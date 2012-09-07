@@ -10,17 +10,18 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 using Wormhole;
+using MazeGameEngine;
 
 
 namespace AdventureGameNamespace
 {
-    public abstract class Floor : GameObject
+    public class DungeonWall : Wall
     {
-        public Floor()
+        public DungeonWall()
             : base()
         {
         }
-        public Floor(Vector2 position)
+        public DungeonWall(Vector2 position)
             : base(position)
         {
         }
