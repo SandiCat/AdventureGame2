@@ -70,6 +70,7 @@ namespace AdventureGameNamespace
             TextureHolder.DefaultTextures[typeof(DungeonFloor2)] = TextureHolder.AddTexture("DungeonFloor2");
             TextureHolder.DefaultTextures[typeof(Player)] = TextureHolder.AddTexture("Player");
             TextureHolder.DefaultTextures[typeof(PlayerSword)] = TextureHolder.AddTexture("PlayerSword");
+            TextureHolder.DefaultTextures[typeof(CannonBot)] = TextureHolder.AddTexture("CannonBot");
 
             //Load sounds:
 
@@ -101,6 +102,7 @@ namespace AdventureGameNamespace
                 {
                     {'w', typeof(DungeonWall)},
                     {'p', typeof(Player)},
+                    {'c', typeof(CannonBot)},
                     {'.', null}
                 },
                 new string[]{
@@ -109,7 +111,7 @@ namespace AdventureGameNamespace
                     "w............w",
                     "w............wwwwwwwwww",
                     "w.....................w",
-                    "w.....p...............w",
+                    "w.....p..........c....w",
                     "w.....................w",
                     "w.....................w",
                     "w............wwwwwwwwww",
