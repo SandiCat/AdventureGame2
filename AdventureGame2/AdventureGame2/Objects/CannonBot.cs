@@ -30,7 +30,7 @@ namespace AdventureGameNamespace
         const int _changeDirection_bottom = 60;
         Alarm _changeDirection = new Alarm(new Random().Next(_changeDirection_bottom, _changeDirection_top));
 
-        const int speed = 4;
+        const int speed = 2;
 
         protected override void Update()
         {
@@ -51,24 +51,7 @@ namespace AdventureGameNamespace
 
         private bool CanStep(MobDirection direction, int distance)
         {
-            //Get angle from direction:
-            float angle = 0;
-            if (Direction == MobDirection.Left)
-            {
-                angle = Directions.Left;
-            }
-            else if (Direction == MobDirection.Right)
-            {
-                angle = Directions.Right;
-            }
-            else if (Direction == MobDirection.Up)
-            {
-                angle = Directions.Up;
-            }
-            else if (Direction == MobDirection.Down)
-            {
-                angle = Directions.Down;
-            }
+            float angle = MobDirectionToAngle(direction);
 
             StepAngle(angle, distance);
 
@@ -97,23 +80,7 @@ namespace AdventureGameNamespace
             if (CanStep(direction, speed))
             {
                 //Get angle from direction:
-                float angle = 0;
-                if (Direction == MobDirection.Left)
-                {
-                    angle = Directions.Left;
-                }
-                else if (Direction == MobDirection.Right)
-                {
-                    angle = Directions.Right;
-                }
-                else if (Direction == MobDirection.Up)
-                {
-                    angle = Directions.Up;
-                }
-                else if (Direction == MobDirection.Down)
-                {
-                    angle = Directions.Down;
-                }
+                float angle = = MobDirectionToAngle(direction);
 
                 StepAngle(angle, speed);
             }
