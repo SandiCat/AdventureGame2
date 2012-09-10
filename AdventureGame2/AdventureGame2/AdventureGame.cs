@@ -37,6 +37,7 @@ namespace AdventureGameNamespace
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Window.Title = "Adventure Game 2.0";
+            IsMouseVisible = true;
 
             //Initialize the static classes:
             ObjectHolder.Initialize();

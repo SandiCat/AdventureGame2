@@ -20,10 +20,12 @@ namespace AdventureGameNamespace
         public CannonBot()
             : base()
         {
+            TurnRandomDirection();
         }
         public CannonBot(Vector2 position)
             : base(position)
         {
+            TurnRandomDirection();
         }
 
         const int _changeDirection_top = 120;
@@ -79,8 +81,7 @@ namespace AdventureGameNamespace
         {
             if (CanStep(direction, speed))
             {
-                //Get angle from direction:
-                float angle = = MobDirectionToAngle(direction);
+                float angle = MobDirectionToAngle(direction);
 
                 StepAngle(angle, speed);
             }

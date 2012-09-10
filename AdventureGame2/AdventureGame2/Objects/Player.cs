@@ -32,35 +32,21 @@ namespace AdventureGameNamespace
             if (KeyboardManager.KeysDown.Contains(Keys.A))
             {
                 TryStep(Directions.Left, 4);
+                ChangeDirectionAndImage(MobDirection.Left);
             }
             else if (KeyboardManager.KeysDown.Contains(Keys.D))
             {
                 TryStep(Directions.Right, 4);
+                ChangeDirectionAndImage(MobDirection.Right);
             }
             else if (KeyboardManager.KeysDown.Contains(Keys.W))
             {
                 TryStep(Directions.Up, 4);
+                ChangeDirectionAndImage(MobDirection.Up);
             }
             else if (KeyboardManager.KeysDown.Contains(Keys.S))
             {
                 TryStep(Directions.Down, 4);
-            }
-
-            //Change direction and image:
-            if (KeyboardManager.PressedKeys.Contains(Keys.A))
-            {
-                ChangeDirectionAndImage(MobDirection.Left);
-            }
-            else if (KeyboardManager.PressedKeys.Contains(Keys.D))
-            {
-                ChangeDirectionAndImage(MobDirection.Right);
-            }
-            else if (KeyboardManager.PressedKeys.Contains(Keys.W))
-            {
-                ChangeDirectionAndImage(MobDirection.Up);
-            }
-            else if (KeyboardManager.PressedKeys.Contains(Keys.S))
-            {
                 ChangeDirectionAndImage(MobDirection.Down);
             }
 
@@ -70,7 +56,11 @@ namespace AdventureGameNamespace
             //Pull out sword:
             if (KeyboardManager.PressedKeys.Contains(Keys.Space))
             {
-                ObjectHolder.Create(new PlayerSword(this));
+                Vector2 mousePosNormal = new Vector2(MouseManager.CurrentMouseState.X - Sprite.Position.X, 
+                    MouseManager.CurrentMouseState.Y - Sprite.Position.Y);
+                mousePosNormal.Normalize();
+
+                ObjectHolder.Create(new PlayerSword(this, (float)Math.Atan2(mousePosNormal.X, -mousePosNormal.Y)));
             }
         }
     }
