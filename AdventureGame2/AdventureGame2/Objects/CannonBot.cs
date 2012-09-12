@@ -74,7 +74,7 @@ namespace AdventureGameNamespace
         }
         private void TurnRandomDirection()
         {
-            MobDirection direction = (MobDirection) new Random().Next(0, 5);
+            MobDirection direction = (MobDirection) Randomizer.Rnd.Next(0, 5);
             ChangeDirectionAndImage(direction);
         }
         private void StepAvoidingWalls(MobDirection direction)
