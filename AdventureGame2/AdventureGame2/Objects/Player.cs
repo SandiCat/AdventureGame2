@@ -54,11 +54,11 @@ namespace AdventureGameNamespace
             Camera.Position = Sprite.Position - new Vector2(WindowChecks.Width() / 2, WindowChecks.Height() / 2);
 
             //Pull out sword:
-            if (KeyboardManager.PressedKeys.Contains(Keys.Space))
+            if (MouseManager.Click())
             {
-                Vector2 mousePosNormal = new Vector2(MouseManager.CurrentMouseState.X - Sprite.Position.X, 
-                    MouseManager.CurrentMouseState.Y - Sprite.Position.Y);
-                mousePosNormal.Normalize();
+                Vector2 mousePosNormal = new Vector2(MouseManager.CurrentMouseState.X,
+                    MouseManager.CurrentMouseState.Y);
+                mousePosNormal -= Sprite.Position - Camera.Position;
 
                 ObjectHolder.Create(new PlayerSword(this, (float)Math.Atan2(mousePosNormal.X, -mousePosNormal.Y)));
             }
