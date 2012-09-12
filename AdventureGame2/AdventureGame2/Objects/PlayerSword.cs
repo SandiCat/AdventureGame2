@@ -28,10 +28,9 @@ namespace AdventureGameNamespace
         public PlayerSword(Mob mob, float rotation)
             : base(mob, rotation)
         {
-            _swordAlarm.Restart(20);
         }
 
-        Alarm _swordAlarm = new Alarm();
+        Alarm _swordAlarm = new Alarm(20);
 
         protected override void Update()
         {

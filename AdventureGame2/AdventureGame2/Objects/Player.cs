@@ -26,6 +26,9 @@ namespace AdventureGameNamespace
         {
         }
 
+        bool _canSword = true;
+        Alarm _restart_canSword = new Alarm();
+
         protected override void Update()
         {
             //Move:
@@ -54,13 +57,22 @@ namespace AdventureGameNamespace
             Camera.Position = Sprite.Position - new Vector2(WindowChecks.Width() / 2, WindowChecks.Height() / 2);
 
             //Pull out sword:
-            if (MouseManager.Click())
+            if (MouseManager.Click() && _canSword != false)
             {
                 Vector2 mousePosNormal = new Vector2(MouseManager.CurrentMouseState.X,
                     MouseManager.CurrentMouseState.Y);
                 mousePosNormal -= Sprite.Position - Camera.Position;
 
                 ObjectHolder.Create(new PlayerSword(this, (float)Math.Atan2(mousePosNormal.X, -mousePosNormal.Y)));
+
+                _canSword = false;
+                _restart_canSword.Restart(30);
+            }
+
+            //Restart _canSword:
+            if (_restart_canSword.IsDone())
+            {
+                _canSword = true;
             }
         }
     }
