@@ -60,7 +60,8 @@ namespace AdventureGameNamespace
             MouseManager.Initialize();
 
             //Initalize the grid:
-            Grid.Initialize(40);
+            Grid grid = new Grid(new Vector2(0, 0), 100, 40);
+            Grid gridFloor = new Grid(new Vector2(0, 0), 100, 40);
 
             //Initialize the camera:
             Camera.Initialize(new Vector2(0,0));
@@ -77,13 +78,14 @@ namespace AdventureGameNamespace
             //Load sounds:
 
             //Create game objects:
-            TileObjectCreator.CreateWithinGrid( //Make the floor
+            gridFloor.CreateFromString( //Make the floor
                 new Dictionary<char, Type>()
                 {
                     {'f', typeof(DungeonFloor)},
                     {'s', typeof(DungeonFloor2)},
                     {'.', null}
                 },
+                new Dictionary<char, GameObject>() { },
                 new string[]{
                     "..............",
                     ".sfffffffffff.",
@@ -99,7 +101,7 @@ namespace AdventureGameNamespace
                     ".............."
                 });
 
-            TileObjectCreator.CreateWithinGrid( 
+            grid.CreateFromString( 
                 new Dictionary<char, Type>()
                 {
                     {'w', typeof(DungeonWall)},
@@ -107,6 +109,10 @@ namespace AdventureGameNamespace
                     {'c', typeof(CannonBot)},      
                     {'s', typeof(Sink)},
                     {'.', null}
+                },
+                new Dictionary<char, GameObject>() 
+                {
+                    {'1', new Sink(new Vector2(0, 0), MazeGameEngine.FurnitureDirection.Up)}
                 },
                 new string[]{
                     "wwwwwwwwwwwwww",
@@ -119,7 +125,7 @@ namespace AdventureGameNamespace
                     "w................c....w",
                     "w............wwwwwwwwww",
                     "w............w",
-                    "w....s.......w",
+                    "w.....1......w",
                     "wwwwwwwwwwwwww"
                 });
 

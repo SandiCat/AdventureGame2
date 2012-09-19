@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureGame2Content", "Ad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeGameEngine", "..\MazeGameEngine\MazeGameEngine\MazeGameEngine.csproj", "{374B26A7-68DC-4091-ABD4-ACCF18E99D0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wormhole", "..\Wormhole\Wormhole\Wormhole.csproj", "{BE55840F-0432-4160-9384-7EC858663A68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -23,6 +25,10 @@ Global
 		{374B26A7-68DC-4091-ABD4-ACCF18E99D0B}.Debug|x86.Build.0 = Debug|x86
 		{374B26A7-68DC-4091-ABD4-ACCF18E99D0B}.Release|x86.ActiveCfg = Release|x86
 		{374B26A7-68DC-4091-ABD4-ACCF18E99D0B}.Release|x86.Build.0 = Release|x86
+		{BE55840F-0432-4160-9384-7EC858663A68}.Debug|x86.ActiveCfg = Debug|x86
+		{BE55840F-0432-4160-9384-7EC858663A68}.Debug|x86.Build.0 = Debug|x86
+		{BE55840F-0432-4160-9384-7EC858663A68}.Release|x86.ActiveCfg = Release|x86
+		{BE55840F-0432-4160-9384-7EC858663A68}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
