@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 using Wormhole;
+using MazeGameEngine;
 
 namespace AdventureGameNamespace
 {
@@ -71,6 +72,7 @@ namespace AdventureGameNamespace
             TextureHolder.DefaultTextures[typeof(DungeonFloor)] = TextureHolder.AddTexture("DungeonFloor");
             TextureHolder.DefaultTextures[typeof(DungeonFloor2)] = TextureHolder.AddTexture("DungeonFloor2");
             TextureHolder.DefaultTextures[typeof(Player)] = TextureHolder.AddTexture("Player");
+            TextureHolder.DefaultTextures[typeof(PlayerLegs)] = TextureHolder.AddTexture("PlayerLegs");
             TextureHolder.DefaultTextures[typeof(PlayerSword)] = TextureHolder.AddTexture("PlayerSword");
             TextureHolder.DefaultTextures[typeof(CannonBot)] = TextureHolder.AddTexture("CannonBot");
             TextureHolder.DefaultTextures[typeof(Sink)] = TextureHolder.AddTexture("Sink");
@@ -117,12 +119,12 @@ namespace AdventureGameNamespace
                 new string[]{
                     "wwwwwwwwwwwwww",
                     "w............w",
-                    "w......c.....w",
+                    "w............w",
                     "w............wwwwwwwwww",
                     "w.....................w",
                     "w.....p...............w",
-                    "w............c........w",
-                    "w................c....w",
+                    "w.....................w",
+                    "w.....................w",
                     "w............wwwwwwwwww",
                     "w............w",
                     "w.....1......w",

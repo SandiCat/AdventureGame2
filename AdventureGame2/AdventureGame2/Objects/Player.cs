@@ -15,15 +15,19 @@ using MazeGameEngine;
 
 namespace AdventureGameNamespace
 {
-    public class Player : Mob
+    public class Player : Human
     {
         public Player()
             : base()
         {
+            _legs = new PlayerLegs(this);
+            ObjectHolder.Create(_legs);
         }
         public Player(Vector2 position)
             : base(position)
         {
+            _legs = new PlayerLegs(this);
+            ObjectHolder.Create(_legs);
         }
 
         bool _canSword = true;

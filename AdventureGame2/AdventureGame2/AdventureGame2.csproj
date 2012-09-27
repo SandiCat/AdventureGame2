@@ -115,6 +115,7 @@
     <Compile Include="Objects\DungeonFloor2.cs" />
     <Compile Include="Objects\DungeonFloor.cs" />
     <Compile Include="Objects\DungeonWall.cs" />
+    <Compile Include="Objects\PlayerLegs.cs" />
     <Compile Include="Objects\PlayerSword.cs" />
     <Compile Include="Objects\Player.cs" />
     <Compile Include="Objects\Sink.cs" />
