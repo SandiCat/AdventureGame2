@@ -33,28 +33,36 @@ namespace AdventureGameNamespace
         bool _canSword = true;
         Alarm _restart_canSword = new Alarm();
 
+        const int _speed = 4;
+
         protected override void Update()
         {
+            _legs.Walking = true;
+
             //Move:
             if (KeyboardManager.KeysDown.Contains(Keys.A))
             {
-                TryStep(Directions.Left, 4);
+                TryStep(Directions.Left, _speed);
                 ChangeDirectionAndImage(MobDirection.Left);
             }
             else if (KeyboardManager.KeysDown.Contains(Keys.D))
             {
-                TryStep(Directions.Right, 4);
+                TryStep(Directions.Right, _speed);
                 ChangeDirectionAndImage(MobDirection.Right);
             }
             else if (KeyboardManager.KeysDown.Contains(Keys.W))
             {
-                TryStep(Directions.Up, 4);
+                TryStep(Directions.Up, _speed);
                 ChangeDirectionAndImage(MobDirection.Up);
             }
             else if (KeyboardManager.KeysDown.Contains(Keys.S))
             {
-                TryStep(Directions.Down, 4);
+                TryStep(Directions.Down, _speed);
                 ChangeDirectionAndImage(MobDirection.Down);
+            }
+            else
+            {
+                _legs.Walking = false;
             }
 
             //Update camera:
