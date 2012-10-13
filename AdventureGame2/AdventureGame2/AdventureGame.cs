@@ -63,6 +63,8 @@ namespace AdventureGameNamespace
             //Initalize the grid:
             Grid grid = new Grid(new Vector2(0, 0), 100, 40);
             Grid gridFloor = new Grid(new Vector2(0, 0), 100, 40);
+            ObjectHolder.Create(grid);
+            ObjectHolder.Create(gridFloor);
 
             //Initialize the camera:
             Camera.Initialize(new Vector2(0,0));
